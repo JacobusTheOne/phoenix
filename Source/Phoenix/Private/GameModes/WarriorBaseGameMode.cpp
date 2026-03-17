@@ -3,3 +3,4 @@
 
 #include "GameModes/WarriorBaseGameMode.h"
 
+#include "WarriorDebugHelper.h"
