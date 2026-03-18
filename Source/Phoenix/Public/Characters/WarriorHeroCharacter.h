@@ -22,7 +22,9 @@ public:
 	// Sets default values for this character's properties
 	AWarriorHeroCharacter();
 protected:
-
+	//~ Begin APawn Interface.
+	virtual void PossessedBy(AController* NewController) override;
+	//~ Begin APawn Interface.
 	//Begin ACharacter
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	//End ACharacter

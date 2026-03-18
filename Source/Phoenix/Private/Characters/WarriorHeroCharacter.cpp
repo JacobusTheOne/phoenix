@@ -11,6 +11,8 @@
 #include "DataAssets/DataAsset_InputConfig.h"
 #include "Components/Input/WarriorInputComponent.h"
 #include "WarriorGameplayTags.h"
+#include "AbillitySystem/WarriorAbilitySystemComponent.h"
+#include "AbillitySystem/WarriorAttributeSet.h"
 
 AWarriorHeroCharacter::AWarriorHeroCharacter()
 {
@@ -34,6 +36,18 @@ AWarriorHeroCharacter::AWarriorHeroCharacter()
 	Movement->MaxWalkSpeed = 400.f;
 	Movement->BrakingDecelerationWalking = 2000.f;
 
+}
+
+void AWarriorHeroCharacter::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+	if (WarriorAbilitySystemComponent && WarriorAttributeSet)
+	{
+		const FString ASCText = FString::Printf(TEXT("Owner Actor: %s, AvatarActor: %s"), *WarriorAbilitySystemComponent->GetOwnerActor()->GetActorLabel(), *WarriorAbilitySystemComponent->GetAvatarActor()->GetActorLabel());
+
+		Debug::Print(TEXT("Ability system component valid. ") + ASCText, FColor::Green);
+		Debug::Print(TEXT("AttributeSet valid. ") + ASCText, FColor::Green);
+	}
 }
 
 void AWarriorHeroCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
