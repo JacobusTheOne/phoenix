@@ -4,6 +4,7 @@
 #include "Characters/WarriorBaseCharacter.h"
 #include "AbillitySystem/WarriorAttributeSet.h"
 #include "AbillitySystem/WarriorAbilitySystemComponent.h"
+#include "DataAssets/StartupData/DataAsset_StartUpDataBase.h"
 
 // Sets default values
 AWarriorBaseCharacter::AWarriorBaseCharacter()
