@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Items/Weapons/WarriorWeaponBase.h"
+#include "WarriorTypes/WarriorStructTypes.h"
+#include "GameplayAbilitySpecHandle.h"
 #include "WarriorHeroWeapon.generated.h"
 
 /**
@@ -13,5 +15,15 @@ UCLASS()
 class PHOENIX_API AWarriorHeroWeapon : public AWarriorWeaponBase
 {
 	GENERATED_BODY()
+public:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "WeaponData")
+	FWarriorHeroWeaponData HeroWeaponData;
+	UFUNCTION(BlueprintPure)
+	TArray<FGameplayAbilitySpecHandle> GetGrantedAbilitySpecHandles() const;
+	UFUNCTION(BlueprintCallable)
+	void AssignGrantedAbilitySpecHandles(const TArray<FGameplayAbilitySpecHandle>& InGrantedAbilitySpecHandles);
 	
+
+private:
+	TArray<FGameplayAbilitySpecHandle> GrantedAbilitySpecHandles;
 };
